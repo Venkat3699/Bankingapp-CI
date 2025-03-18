@@ -9,3 +9,4 @@
 8. Blue Ocean
 9. Blue Ocean Pipeline Editor
 10. Dashboard for Blue Ocean
+11. Kubernetes
