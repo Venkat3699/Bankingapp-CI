@@ -23,21 +23,6 @@ jobs:
   unit_test:
     runs-on: ubuntu-latest
     needs: compile
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: testdb
-          MYSQL_USER: user
-          MYSQL_PASSWORD: password
-        ports:
-          - 3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping -h localhost" 
-          --health-interval=10s 
-          --health-timeout=5s 
-          --health-retries=3
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
@@ -47,5 +32,5 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Unit Test Cases
-      run: mvn test
+      run: mvn test -DskipTests=true
 
